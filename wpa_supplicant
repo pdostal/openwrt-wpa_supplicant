@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+# wpa_supplicant
+
+START=25
+STOP=15
+
+CONF=/etc/EXAMPLE.conf
+PID=/var/run/wpa_supplicant.pid
+
+start() {
+  wpa_supplicant -D wired -i eth0 -c $CONF -P $PID -B
+}
+
+stop() {
+  rm /var/run/wpa_supplicant.pid
+}
